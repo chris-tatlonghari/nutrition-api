@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+    box-sizing: border-box;
+ }
+
+body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1, h2, h4, h6 {
+    margin: 0px 0px 5px 0px;
+    color: rgb(168 21 42);
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+#nutrition-facts-container {
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(100, 100, 100);
+    padding: 20px;
+    margin-top: 36px;
+}
+
+#serving-size {
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+#percent-daily-value {
+    text-align: right;
+}
+
+#calories {
+    font-size: 1.5em;
+    margin: 10px 0 0 0;
+}
+
+.percent-daily-value {
+    float: right;
+}
+
+.nutrition-info {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.section-lg, .section-md, .section-sm, .section-xs {
+    margin: 0;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.section-lg {
+    border-bottom: 8px solid rgb(100, 100, 100);
+}
+
+.section-md {
+    border-bottom: 6px solid rgb(100, 100, 100);
+}
+
+.section-sm {
+    border-bottom: 3px solid rgb(100, 100, 100);
+}
+
+.section-xs {
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.sub-info {
+    padding-left: 1.5em;
+}
