@@ -8,7 +8,7 @@
 
             <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
 
-            <% @service.food_items.each do |food_item| %>
+            <% @food_items.each do |food_item| %>
                 <div class="checkbox">
                     <label>
                         <%= check_box_tag "food_item_ids[]",

@@ -7,6 +7,7 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+    @food_items = @service.food_items.order(:sodium_mg)
 
     selected_ids = Array(params[:food_item_ids]).map(&:to_i)
 
