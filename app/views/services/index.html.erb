@@ -1,5 +1,12 @@
 <h1> Services </h1>
 
-<% @services.each do |service| %>
-    <h3> <%= link_to(service.name, service_path(service.id)) %> </h3>
-<% end %>
+<div class="my-3">
+    <ul>
+        <% @services.each do |service| %>
+            <li>
+                <h3> <%= link_to(service.name, service_path(service.id)) %> </h3>
+            </li>
+        <% end %>
+    </ul>
+
+</div>

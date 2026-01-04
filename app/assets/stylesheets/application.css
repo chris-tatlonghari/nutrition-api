@@ -36,10 +36,6 @@ h2 {
     font-size: 30px;
 }
 
-ul {
-    list-style-type: circle;
-}
-
 #nutrition-facts-container {
     color: rgb(100, 100, 100);
     border: 1px solid rgb(100, 100, 100);
