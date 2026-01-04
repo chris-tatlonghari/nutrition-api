@@ -1,0 +1,109 @@
+<div id="nutrition-facts-container">
+    <h2> Nutrition Facts </h2>
+    <div class="nutrition-info" id="nutrition-fact-label">
+        <div class="section-lg" id="serving-size">
+            <p>
+                <strong>
+                    Serving size:
+                </strong>
+            </p>
+        </div>
+        <div class="section-md" id="calories-info">
+            <p id="calories">
+                <strong>
+                    Calories <%= nutrition[:calories] %>
+                </strong>
+            </p>
+            <p>
+                Calories from Fat <%= nutrition[:calories_from_fat] %>
+            </p>
+        </div>
+        <div class="nutriction-fact-inner">
+            <div class="section-sm">
+                <p id="percent-daily-value">
+                    <strong>
+                        % Daily Value
+                    </strong>
+                </p>
+            </div>
+            <div class="section-xs">
+                <p>
+                    <strong>
+                        Total Fat
+                    </strong>
+                    <%= nutrition[:total_fat] %>g
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:total_fat_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-xs">
+                <p class="sub-info">
+                    Saturated Fat <%= nutrition[:sat_fat] %>g
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:sat_fat_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-sm">
+                <p class="sub-info">
+                    Trans Fat <%= nutrition[:trans_fat] %>g
+                </p>
+            </div>
+            <div class="section-sm">
+                <p>
+                    <strong>
+                        Cholesterol
+                    </strong>
+                    <%= nutrition[:cholesterol] %>mg
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:cholesterol_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-sm">
+                <p>
+                    <strong>
+                        Sodium
+                    </strong>
+                    <%= nutrition[:sodium] %>mg
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:sodium_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-xs">
+                <p>
+                    <strong>
+                        Total Carbohydrate
+                    </strong>
+                    <%= nutrition[:total_carbs] %>g
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:total_carbs_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-xs">
+                <p class="sub-info">
+                    Dietary Fiber <%= nutrition[:dietary_fiber] %>g
+                    <strong class="percent-daily-value">
+                        <%= nutrition[:dietary_fiber_dv_pct] %>%
+                    </strong>
+                </p>
+            </div>
+            <div class="section-sm">
+                <p class="sub-info">
+                    Total Sugars <%= nutrition[:total_sugars] %>g
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>
+                        Protein
+                    </strong>
+                    <%= nutrition[:protein] %>g
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

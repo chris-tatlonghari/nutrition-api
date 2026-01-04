@@ -1,124 +1,35 @@
 <h1> <%= @service.name %> </h1>
 
-<% @service.food_items.each do |food_item| %>
-    <div> 
-        <ul>
-            <%= food_item.name %>
-        </ul>
-    </div>
-<% end %>
+<div class="row">
+    <div class="col-sm-7 col-xs-12">
+        <%= form_with url: service_path(@service),
+                    method: :get,
+                    data: { controller: "autosubmit", turbo_frame: "nutrition_facts" } do %>
 
-<div class="col-sm-5 col-xs-12">
-    <div id="nutrition-facts-container">
-        <h2>Nutrition Facts</h2>
-        <div class="nutrition-info" id="nutrition-fact-label">
-            <div class="section-lg" id="serving-size">
-                <p>
-                    <strong>
-                        Serving size: 1 Bowl
-                    </strong>
-                </p>
-            </div>
-            <div class="section-md" id="calories-info">
-                <p id="calories">
-                    <strong>
-                        Calories 0
-                    </strong>
-                </p>
-                <p>
-                    Calories from Fat 0
-                </p>
-            </div>
-            <div class="nutriction-fact-inner">
-                <div class="section-sm">
-                    <p id="percent-daily-value">
-                        <strong>
-                            % Daily Value
-                        </strong>
-                    </p>
+            <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
+
+            <% @service.food_items.each do |food_item| %>
+                <div class="checkbox">
+                    <label>
+                        <%= check_box_tag "food_item_ids[]",
+                            food_item.id,
+                            selected_ids.include?(food_item.id),
+                            data: { action: "change->autosubmit#submit" } %>
+                        <%= food_item.name %>
+                    </label>
                 </div>
-                <div class="section-xs">
-                    <p>
-                        <strong>
-                            Total Fat
-                        </strong>
-                        0g
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-xs">
-                    <p class="sub-info">
-                        Saturated Fat 0g
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-sm">
-                    <p class="sub-info">
-                        Trans Fat 0g
-                    </p>
-                </div>
-                <div class="section-sm">
-                    <p>
-                        <strong>
-                            Cholesterol
-                        </strong>
-                        0mg
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-sm">
-                    <p>
-                        <strong>
-                            Sodium
-                        </strong>
-                        0mg
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-xs">
-                    <p>
-                        <strong>
-                            Total Carbohydrate
-                        </strong>
-                        0g
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-xs">
-                    <p class="sub-info">
-                        Dietary Fiber 0g
-                        <strong class="percent-daily-value">
-                            0%
-                        </strong>
-                    </p>
-                </div>
-                <div class="section-sm">
-                    <p class="sub-info">
-                        Total Sugars 0g
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <strong>
-                            Protein
-                        </strong>
-                        0g
-                    </p>
-                </div>
-            </div>
-        </div>
+            <% end %>
+
+        <% end %>
+    </div>
+
+    <div class="col-sm-5 col-xs-12">
+        <turbo-frame id="nutrition_facts">
+        <%= render "nutrition_facts", nutrition: @nutrition %>
+        </turbo-frame>
     </div>
 </div>
+
 <br>
 
 <%= link_to("All Services", services_path) %>
