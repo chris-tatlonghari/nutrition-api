@@ -453,6 +453,74 @@ h2 {
     color: rgb(255 255 255 / 85%);
 }
 
+.nutrition-footer {
+    background: rgb(255 255 255 / 88%);
+    border-top: 1px solid rgb(220 220 220 / 70%);
+}
+
+.nutrition-footer h6 {
+    color: var(--nutrition-ink);
+    margin-bottom: 12px;
+}
+
+.footer-brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--nutrition-ink);
+}
+
+.footer-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--nutrition-red) 0%, var(--nutrition-amber) 100%);
+    color: rgb(255 255 255);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.footer-title {
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.footer-copy,
+.footer-meta {
+    color: rgb(95 95 95);
+    max-width: 320px;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: rgb(95 95 95);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: var(--nutrition-red);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgb(230 230 230);
+    color: rgb(120 120 120);
+    font-size: 0.9rem;
+    gap: 8px;
+}
+
+.footer-version {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+}
+
 @media (max-width: 768px) {
     .landing-hero {
         padding: 40px 0 24px;
