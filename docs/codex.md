@@ -8,3 +8,8 @@
 ## Implementation
 - Favor composability: extract shared UI into partials or components.
 - Keep styling centralized with reusable CSS variables when possible.
+
+## Product Context
+- Consumer-facing app answering "What is in my food?" across services.
+- Helps customers find food options and build/save meals that meet dietary restrictions.
+- Primary user (user 0) is focused on sodium restriction.
