@@ -12,4 +12,3 @@
 ## Product Context
 - Consumer-facing app answering "What is in my food?" across services.
 - Helps customers find food options and build/save meals that meet dietary restrictions.
-- Primary user (user 0) is focused on sodium restriction.
