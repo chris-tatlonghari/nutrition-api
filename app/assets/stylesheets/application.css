@@ -18,6 +18,9 @@
     --nutrition-red: rgb(168 21 42);
     --nutrition-red-dark: rgb(126 15 31);
     --nutrition-red-light: rgb(208 68 82);
+    --nutrition-teal: rgb(0 118 128);
+    --nutrition-teal-dark: rgb(0 86 94);
+    --nutrition-amber: rgb(217 140 53);
     --nutrition-cream: rgb(255 249 245);
     --nutrition-ink: rgb(28 22 22);
 }
@@ -119,12 +122,12 @@ h2 {
 }
 
 .nutrition-body {
-    background: radial-gradient(circle at 20% 10%, var(--nutrition-cream) 0%, rgb(255 255 255) 40%, rgb(245 245 245) 100%);
+    background: radial-gradient(circle at 18% 12%, var(--nutrition-cream) 0%, rgb(255 255 255) 35%, rgb(245 245 245) 75%, rgb(0 118 128 / 6%) 100%);
     color: var(--nutrition-ink);
 }
 
 .navbar-nutrition {
-    background: linear-gradient(100deg, var(--nutrition-red) 0%, var(--nutrition-red-dark) 55%, var(--nutrition-red) 100%);
+    background: linear-gradient(110deg, var(--nutrition-red-dark) 0%, var(--nutrition-red) 50%, var(--nutrition-amber) 50%, var(--nutrition-amber) 100%);
     box-shadow: 0 14px 30px rgb(0 0 0 / 16%);
 }
 
@@ -170,7 +173,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-weight: 600;
-    color: rgb(120 120 120);
+    color: var(--nutrition-teal);
     margin-bottom: 12px;
     font-size: 0.85rem;
 }
@@ -215,7 +218,7 @@ h2 {
 }
 
 .hero-card-title {
-    color: var(--nutrition-red);
+    color: var(--nutrition-teal);
     margin-bottom: 12px;
 }
 
@@ -317,7 +320,7 @@ h2 {
 }
 
 .food-item-checkbox:focus-visible + .food-item-name {
-    outline: 3px solid rgb(168 21 42 / 25%);
+    outline: 3px solid rgb(0 118 128 / 28%);
     outline-offset: 2px;
 }
 .hero-card-list {
@@ -327,7 +330,7 @@ h2 {
 }
 
 .landing-progress .progress-bar {
-    background: var(--nutrition-red);
+    background: var(--nutrition-teal);
     font-weight: 600;
 }
 
@@ -361,7 +364,7 @@ h2 {
 .step-number {
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--nutrition-red);
+    color: var(--nutrition-amber);
     letter-spacing: 0.05em;
 }
 
@@ -392,13 +395,13 @@ h2 {
 }
 
 .landing-hero .btn-outline-light {
-    border-color: var(--nutrition-red);
-    color: var(--nutrition-red);
+    border-color: var(--nutrition-teal);
+    color: var(--nutrition-teal);
 }
 
 .landing-hero .btn-outline-light:hover,
 .landing-hero .btn-outline-light:focus {
-    background: var(--nutrition-red);
+    background: var(--nutrition-teal);
     color: rgb(255 255 255);
 }
 
@@ -437,7 +440,7 @@ h2 {
     margin: 60px 0 20px;
     padding: 40px;
     border-radius: 24px;
-    background: linear-gradient(115deg, var(--nutrition-red) 0%, var(--nutrition-red-dark) 55%, var(--nutrition-red) 100%);
+    background: linear-gradient(120deg, var(--nutrition-red) 0%, var(--nutrition-red-dark) 45%, var(--nutrition-teal-dark) 80%, var(--nutrition-amber) 100%);
     color: rgb(255 255 255);
     text-align: center;
 }
