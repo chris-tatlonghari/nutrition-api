@@ -1,0 +1,183 @@
+<section class="landing-hero">
+    <div class="row align-items-center g-4">
+        <div class="col-12 col-lg-6">
+            <p class="eyebrow">Consumer Nutrition</p>
+            <h1>Know what’s in your food before you order.</h1>
+            <p class="lead">
+                Find menu items across services, filter by your goals, and build meals that fit your
+                dietary restrictions without second-guessing.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a class="btn btn-nutrition btn-lg" href="#explore">Find meals that fit</a>
+                <a class="btn btn-outline-light btn-lg" href="#how-it-works">How it works</a>
+            </div>
+            <div class="landing-trust mt-4">
+                <div>
+                    <p class="trust-title">Data-backed choices</p>
+                    <p class="trust-copy">Nutrition data aligned with official menu sources.</p>
+                </div>
+                <div>
+                    <p class="trust-title">Restrictions first</p>
+                    <p class="trust-copy">Sodium, allergens, and custom dietary goals.</p>
+                </div>
+                <div>
+                    <p class="trust-title">Save &amp; return</p>
+                    <p class="trust-copy">Build meals and revisit your favorites.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <span class="badge bg-light text-dark">Today’s target</span>
+                    <span class="hero-card-date">Daily target: 1,500 cal</span>
+                </div>
+                <h3 class="hero-card-title">Balanced dinner</h3>
+                <ul class="hero-card-list">
+                    <li>Grilled chicken bowl — 420 cal</li>
+                    <li>Seasonal salad — 160 cal</li>
+                    <li>Citrus vinaigrette — 90 cal</li>
+                </ul>
+                <div class="progress landing-progress" role="progressbar" aria-label="Daily target" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 45%">670 cal used</div>
+                </div>
+                <p class="hero-card-footnote">Swap a side to save 120 calories.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-section" id="how-it-works">
+    <div class="landing-header">
+        <h2>How it works</h2>
+        <p>Search, filter, and save meals that match your restrictions.</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-12 col-md-4">
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <h3>Pick a service</h3>
+                <p>Browse restaurants and delivery platforms in one place.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <h3>Filter by goals</h3>
+                <p>Set daily targets, then see menu items that fit.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <h3>Build &amp; save</h3>
+                <p>Create meals, track totals, and save plans for later.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-section" id="explore">
+    <div class="landing-header">
+        <h2>Explore services</h2>
+        <p>Browse menus and spot goal-friendly picks instantly.</p>
+    </div>
+    <div class="row g-4">
+        <% @services.each do |service| %>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card h-100">
+                    <div class="service-card-header">
+                        <span class="badge text-bg-light">Fits your goals</span>
+                    </div>
+                    <h3><%= service.name %></h3>
+                    <p>Tap to view menu items and build a meal with totals.</p>
+                    <%= link_to "Browse menu", service_path(service.id), class: "btn btn-outline-light" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</section>
+
+<section class="landing-section" id="meal-builder">
+    <div class="landing-header">
+        <h2>Meal builder preview</h2>
+        <p>Save combinations that meet your nutrition targets and reuse them.</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-12 col-lg-7">
+            <div class="meal-preview">
+                <div class="meal-preview-header">
+                    <h3>Saved: Weeknight go-to</h3>
+                    <span class="badge bg-light text-dark">1,120mg total</span>
+                </div>
+                <ul>
+                    <li>Roasted turkey wrap — 480mg</li>
+                    <li>Quinoa salad — 290mg</li>
+                    <li>Sparkling citrus — 0mg</li>
+                </ul>
+                <p class="meal-preview-note">Under budget with 380mg left today.</p>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5">
+            <div class="meal-preview-aside">
+                <h3>Next up</h3>
+                <p>Plan tomorrow with a saved template and adjust targets per meal.</p>
+                <a class="btn btn-nutrition" href="#final-cta">Start planning</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-section">
+    <div class="landing-header">
+        <h2>FAQ</h2>
+        <p>Answers to the most common questions.</p>
+    </div>
+    <div class="accordion" id="landingFAQ">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
+                    Where does the nutrition data come from?
+                </button>
+            </h2>
+            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#landingFAQ">
+                <div class="accordion-body">
+                    We use official restaurant and service nutrition listings, paired with checks for
+                    updates.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
+                    Can I track other restrictions?
+                </button>
+            </h2>
+            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#landingFAQ">
+                <div class="accordion-body">
+                    Yes. You can filter by calories, macros, allergens, and custom dietary targets.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
+                    Do I need to create an account?
+                </button>
+            </h2>
+            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#landingFAQ">
+                <div class="accordion-body">
+                    You can browse immediately. Create an account to save meals and track history.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-final" id="final-cta">
+    <div class="landing-final-content">
+        <h2>Start your meal plan today.</h2>
+        <p>Find meals you can trust, save them, and feel confident about every order.</p>
+        <a class="btn btn-nutrition btn-lg" href="#explore">Explore services</a>
+    </div>
+</section>
