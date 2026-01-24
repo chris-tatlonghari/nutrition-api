@@ -1,6 +1,6 @@
-<h1> <%= @service.name %> </h1>
+<h1 class="service-title"><%= @service.name %></h1>
 
-<div class="row">
+<div class="row service-layout">
     <div class="col-sm-7 col-xs-12">
         <%= form_with url: service_path(@service),
                     method: :get,
@@ -8,17 +8,23 @@
 
             <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
 
-            <% @food_items.each do |food_item| %>
-                <div class="checkbox">
-                    <label>
-                        <%= check_box_tag "food_item_ids[]",
-                            food_item.id,
-                            selected_ids.include?(food_item.id),
-                            data: { action: "change->autosubmit#submit" } %>
-                        <%= food_item.name %>
-                    </label>
-                </div>
-            <% end %>
+            <div class="food-item-grid">
+                <% @food_items.each do |food_item| %>
+                    <div class="checkbox food-item-option">
+                        <label class="food-item-card">
+                            <%= check_box_tag "food_item_ids[]",
+                                food_item.id,
+                                selected_ids.include?(food_item.id),
+                                class: "food-item-checkbox",
+                                data: { action: "change->autosubmit#submit" } %>
+                            <span class="food-item-name">
+                                <span class="food-item-check">✓</span>
+                                <span class="food-item-label"><%= food_item.name %></span>
+                            </span>
+                        </label>
+                    </div>
+                <% end %>
+            </div>
 
         <% end %>
     </div>
@@ -31,5 +37,3 @@
 </div>
 
 <br>
-
-<%= link_to("All Services", services_path) %>

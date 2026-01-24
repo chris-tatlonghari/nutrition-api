@@ -200,6 +200,107 @@ h2 {
     margin-bottom: 12px;
 }
 
+.service-title {
+    text-align: center;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    letter-spacing: 0.03em;
+    margin: 16px 0 28px;
+}
+
+.food-item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px 28px;
+    margin-top: 12px;
+}
+
+.service-layout .col-sm-7 {
+    padding-right: 28px;
+}
+
+.service-layout .col-sm-5 {
+    padding-left: 28px;
+}
+
+@media (max-width: 767px) {
+    .service-layout .col-sm-7,
+    .service-layout .col-sm-5 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.food-item-option {
+    margin: 0;
+    position: relative;
+}
+
+.food-item-card {
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+.food-item-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.food-item-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgb(210 210 210);
+    background: linear-gradient(135deg, rgb(255 255 255) 0%, rgb(252 246 243) 100%);
+    box-shadow: 0 10px 18px rgb(0 0 0 / 6%);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.food-item-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 2px solid rgb(190 190 190);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    background: rgb(255 255 255);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.food-item-label {
+    flex: 1;
+}
+
+.food-item-card:hover .food-item-name {
+    border-color: rgb(180 180 180);
+    box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
+}
+
+.food-item-checkbox:checked + .food-item-name {
+    color: var(--nutrition-red);
+    border-color: var(--nutrition-red-light);
+    box-shadow: 0 14px 28px rgb(168 21 42 / 20%);
+    transform: translateY(-1px);
+}
+
+.food-item-checkbox:checked + .food-item-name .food-item-check {
+    color: rgb(255 255 255);
+    border-color: var(--nutrition-red);
+    background: radial-gradient(circle, var(--nutrition-red) 0%, var(--nutrition-red-light) 70%);
+}
+
+.food-item-checkbox:focus-visible + .food-item-name {
+    outline: 3px solid rgb(168 21 42 / 25%);
+    outline-offset: 2px;
+}
 .hero-card-list {
     padding-left: 18px;
     margin-bottom: 18px;
