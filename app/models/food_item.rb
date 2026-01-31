@@ -32,5 +32,7 @@
 #  service_id  (service_id => services.id)
 #
 class FoodItem < ApplicationRecord
-  
+  def self.ransackable_attributes(*) = %w[name calories protein_g sodium_mg carbs_g]
+
+  def self.ransackable_associations(*) = []
 end
