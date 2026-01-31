@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def show
-    @services = Service.all
+    @q = Service.ransack
   end
 end

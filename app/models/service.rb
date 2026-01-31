@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+class Service < ApplicationRecord
+  include NutritionCalculation
+
+  has_many :food_items
+
+  def self.ransackable_attributes(*) = %w[name]
+end
+
 # == Schema Information
 #
 # Table name: services
@@ -9,8 +17,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Service < ApplicationRecord
-  include NutritionCalculation
-
-  has_many :food_items
-end

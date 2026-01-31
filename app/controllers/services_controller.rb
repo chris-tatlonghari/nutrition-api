@@ -2,7 +2,8 @@
 
 class ServicesController < ApplicationController
   def index
-    @services = Service.all
+    @q = Service.ransack(params[:q])
+    @services = @q.result
   end
 
   def show
