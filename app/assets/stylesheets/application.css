@@ -317,27 +317,87 @@ h2 {
 }
 
 .sort-btn {
-    padding: 8px 16px;
-    border: 1px solid rgb(226 232 240);
+    position: relative;
     background: white;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
+    border: 2px solid rgb(226 232 240);
     color: rgb(74 85 104);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .sort-btn:hover {
     border-color: var(--nutrition-secondary);
-    color: var(--nutrition-primary);
-    background: var(--nutrition-cream);
+    box-shadow: 0 6px 20px rgba(107, 142, 78, 0.2);
 }
 
 .sort-btn.active {
-    background: var(--nutrition-primary);
-    color: white;
+    background: linear-gradient(135deg, var(--nutrition-primary) 0%, var(--nutrition-primary-dark) 100%);
     border-color: var(--nutrition-primary);
+    color: white;
+    box-shadow: 0 4px 16px rgba(101, 163, 13, 0.3);
+}
+
+.sort-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(107, 142, 78, 0.15);
+    font-size: 11px;
+    margin-right: 0;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease, margin-right 2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    overflow: hidden;
+}
+
+.sort-btn.active .sort-icon {
+    width: 18px;
+    margin-right: 8px;
+    opacity: 1;
+}
+
+.sort-btn.active.desc .sort-icon {
+    transform: scale(1) rotate(180deg);
+}
+
+.sort-btn.active .sort-icon {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.sort-text {
+    transition: transform 0.3s ease;
+}
+
+.sort-btn:hover .sort-text {
+    transform: translateX(2px);
+}
+
+/* Ripple effect */
+.sort-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(107, 142, 78, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.sort-btn:active::before {
+    width: 300px;
+    height: 300px;
 }
 
 .food-item-list {

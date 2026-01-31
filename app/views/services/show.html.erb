@@ -8,38 +8,104 @@
 
             <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
 
-            <div class="sort-controls">
-                <span class="sort-label">Sort by:</span>
-                <button type="button" class="sort-btn active">Name</button>
-                <button type="button" class="sort-btn">Calories</button>
-                <button type="button" class="sort-btn">Protein</button>
-                <button type="button" class="sort-btn">Sodium</button>
-                <button type="button" class="sort-btn">Carbs</button>
-            </div>
+            <%= turbo_frame_tag "food_items_list" do %>
+                <div class="sort-controls" data-controller="sort">
+                    <span class="sort-label">Sort by:</span>
+                    <%= button_tag type: "submit",
+                        name: "q[s]",
+                        value: sort_value('name'),
+                        class: "sort-btn #{active_sort_classes('name')}",
+                        data: {
+                            sort_target: "button",
+                            field: "name",
+                            action: "click->sort#toggle",
+                            turbo_frame: "food_items_list"
+                        } do %>
+                        <span class="sort-icon">↑</span>
+                        <span class="sort-text">Name</span>
+                    <% end %>
 
-            <div class="food-item-list">
-                <% @food_items.each do |food_item| %>
-                    <label class="food-item-card-list <%= 'selected' if selected_ids.include?(food_item.id) %>" data-controller="food-item" data-food-item-card>
-                        <%= check_box_tag "food_item_ids[]",
-                            food_item.id,
-                            selected_ids.include?(food_item.id),
-                            class: "food-item-checkbox-list",
-                            data: { action: "change->food-item#toggle change->autosubmit#submit" } %>
-                        <span class="food-item-check-list">✓</span>
-                        <span class="food-item-name-list"><%= food_item.name %></span>
-                        <div class="food-item-info">
-                            <div class="info-item">
-                                <span class="info-label">Cal</span>
-                                <span class="info-value"><%= food_item.calories %></span>
+                    <%= button_tag type: "submit",
+                        name: "q[s]",
+                        value: sort_value('calories'),
+                        class: "sort-btn #{active_sort_classes('calories')}",
+                        data: {
+                            sort_target: "button",
+                            field: "calories",
+                            action: "click->sort#toggle",
+                            turbo_frame: "food_items_list"
+                        } do %>
+                        <span class="sort-icon">↑</span>
+                        <span class="sort-text">Calories</span>
+                    <% end %>
+
+                    <%= button_tag type: "submit",
+                        name: "q[s]",
+                        value: sort_value('protein_g'),
+                        class: "sort-btn #{active_sort_classes('protein_g')}",
+                        data: {
+                            sort_target: "button",
+                            field: "protein_g",
+                            action: "click->sort#toggle",
+                            turbo_frame: "food_items_list"
+                        } do %>
+                        <span class="sort-icon">↑</span>
+                        <span class="sort-text">Protein</span>
+                    <% end %>
+
+                    <%= button_tag type: "submit",
+                        name: "q[s]",
+                        value: sort_value('sodium_mg'),
+                        class: "sort-btn #{active_sort_classes('sodium_mg')}",
+                        data: {
+                            sort_target: "button",
+                            field: "sodium_mg",
+                            action: "click->sort#toggle",
+                            turbo_frame: "food_items_list"
+                        } do %>
+                        <span class="sort-icon">↑</span>
+                        <span class="sort-text">Sodium</span>
+                    <% end %>
+
+                    <%= button_tag type: "submit",
+                        name: "q[s]",
+                        value: sort_value('carbs_g'),
+                        class: "sort-btn #{active_sort_classes('carbs_g')}",
+                        data: {
+                            sort_target: "button",
+                            field: "carbs_g",
+                            action: "click->sort#toggle",
+                            turbo_frame: "food_items_list"
+                        } do %>
+                        <span class="sort-icon">↑</span>
+                        <span class="sort-text">Carbs</span>
+                    <% end %>
+                </div>
+
+                <div class="food-item-list">
+                    <% @food_items.each do |food_item| %>
+                        <label class="food-item-card-list <%= 'selected' if selected_ids.include?(food_item.id) %>" data-controller="food-item" data-food-item-card>
+                            <%= check_box_tag "food_item_ids[]",
+                                food_item.id,
+                                selected_ids.include?(food_item.id),
+                                class: "food-item-checkbox-list",
+                                data: { action: "change->food-item#toggle change->autosubmit#submit" } %>
+                            <span class="food-item-check-list">✓</span>
+                            <span class="food-item-name-list"><%= food_item.name %></span>
+                            <div class="food-item-info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value"><%= food_item.calories %></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Sodium</span>
+                                    <span class="info-value"><%= food_item.sodium_mg %>mg</span>
+                                </div>
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Sodium</span>
-                                <span class="info-value"><%= food_item.sodium_mg %>mg</span>
-                            </div>
-                        </div>
-                    </label>
-                <% end %>
-            </div>
+                        </label>
+                    <% end %>
+                </div>
+            <% end %>
 
         <% end %>
     </div>

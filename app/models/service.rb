@@ -6,6 +6,8 @@ class Service < ApplicationRecord
   has_many :food_items
 
   def self.ransackable_attributes(*) = %w[name]
+
+  def self.ransackable_associations(*) = []
 end
 
 # == Schema Information
