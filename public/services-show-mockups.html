@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Show Page Mockups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #e5e5e5;
+            padding: 40px 20px;
+        }
+
+        .mockup-wrapper {
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .mockup-info {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .mockup-label {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .mockup-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .page-mockup {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 40px;
+        }
+
+        /* Common styles */
+        .service-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        /* Sort controls */
+        .sort-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .sort-btn {
+            padding: 8px 16px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sort-btn:hover {
+            border-color: #84CC16;
+            color: #65A30D;
+            background: #F7FEE7;
+        }
+
+        .sort-btn.active {
+            background: #65A30D;
+            color: white;
+            border-color: #65A30D;
+        }
+
+        /* Nutrition facts card */
+        .nutrition-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+        }
+
+        .nutrition-card h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nutrition-section {
+            border-bottom: 2px solid #e2e8f0;
+            padding: 12px 0;
+        }
+
+        .nutrition-section.thick {
+            border-bottom: 8px solid #1a1a1a;
+        }
+
+        .nutrition-section.medium {
+            border-bottom: 4px solid #1a1a1a;
+        }
+
+        .nutrition-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        .nutrition-row strong {
+            font-weight: 600;
+        }
+
+        .calories-big {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* Option 1: Compact Grid Cards */
+        .food-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .food-card-compact {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .food-card-compact:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .food-card-compact.selected {
+            border-color: #65A30D;
+            background: #F7FEE7;
+            box-shadow: 0 4px 16px rgba(101, 163, 13, 0.15);
+        }
+
+        .food-card-compact .check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: transparent;
+            font-size: 12px;
+        }
+
+        .food-card-compact.selected .check {
+            background: #65A30D;
+            border-color: #65A30D;
+            color: white;
+        }
+
+        .food-card-compact .name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2d3748;
+            line-height: 1.3;
+        }
+
+        /* Option 2: List Style Cards */
+        .food-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .food-card-list {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .food-card-list:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .food-card-list.selected {
+            border-color: #65A30D;
+            background: #F7FEE7;
+        }
+
+        .food-card-list .check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: transparent;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .food-card-list.selected .check {
+            background: #65A30D;
+            border-color: #65A30D;
+            color: white;
+        }
+
+        .food-card-list .name {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .food-card-list .info {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .food-card-list .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .food-card-list .info-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .food-card-list .info-value {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        /* Option 3: Minimal Pills */
+        .food-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .food-pill {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .food-pill:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .food-pill.selected {
+            background: #65A30D;
+            border-color: #65A30D;
+            color: white;
+        }
+
+        .food-pill .check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            font-size: 11px;
+        }
+
+        .food-pill.selected .check {
+            background: white;
+            border-color: white;
+            color: #65A30D;
+        }
+
+        @media (max-width: 968px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nutrition-card {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Option 1: Compact Grid Cards -->
+    <div class="mockup-wrapper">
+        <div class="mockup-info">
+            <div class="mockup-label">Option 1: Compact Grid Cards</div>
+            <div class="mockup-description">
+                <strong>Best for:</strong> Clean, scannable layout with visual balance<br>
+                <strong>Changes:</strong> Smaller cards (160px), centered layout, minimal color usage (only on selected states), sortable controls at top
+            </div>
+        </div>
+        <div class="page-mockup">
+            <h1 class="service-title">Chipotle</h1>
+
+            <div class="layout-grid">
+                <div>
+                    <div class="sort-controls">
+                        <span class="sort-label">Sort by:</span>
+                        <button class="sort-btn active">Name</button>
+                        <button class="sort-btn">Calories</button>
+                        <button class="sort-btn">Protein</button>
+                        <button class="sort-btn">Sodium</button>
+                        <button class="sort-btn">Carbs</button>
+                    </div>
+
+                    <div class="food-grid-compact">
+                        <div class="food-card-compact selected">
+                            <div class="check">✓</div>
+                            <div class="name">Chicken</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Steak</div>
+                        </div>
+                        <div class="food-card-compact selected">
+                            <div class="check">✓</div>
+                            <div class="name">White Rice</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Brown Rice</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Black Beans</div>
+                        </div>
+                        <div class="food-card-compact selected">
+                            <div class="check">✓</div>
+                            <div class="name">Pinto Beans</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Fajita Veggies</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Cheese</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Sour Cream</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Guacamole</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Mild Salsa</div>
+                        </div>
+                        <div class="food-card-compact">
+                            <div class="check">✓</div>
+                            <div class="name">Corn Salsa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nutrition-card">
+                        <h2>Nutrition Facts</h2>
+                        <div class="nutrition-section thick">
+                            <div class="nutrition-row">
+                                <span class="calories-big">840</span>
+                                <span>Calories</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section medium">
+                            <div class="nutrition-row">
+                                <span style="font-size: 12px; color: #718096;">% Daily Value</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Fat</strong> 28g</span>
+                                <strong>36%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Sodium</strong> 1,820mg</span>
+                                <strong>79%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Carbs</strong> 82g</span>
+                                <strong>30%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section" style="border: none;">
+                            <div class="nutrition-row">
+                                <span><strong>Protein</strong> 48g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: List Style with Nutrition Preview -->
+    <div class="mockup-wrapper">
+        <div class="mockup-info">
+            <div class="mockup-label">Option 2: List Style with Nutrition Preview</div>
+            <div class="mockup-description">
+                <strong>Best for:</strong> Dense information display, easy scanning, shows key nutrition at a glance<br>
+                <strong>Changes:</strong> List layout with inline nutrition data, very compact, shows Cal/Pro/Sodium for each item
+            </div>
+        </div>
+        <div class="page-mockup">
+            <h1 class="service-title">Chipotle</h1>
+
+            <div class="layout-grid">
+                <div>
+                    <div class="sort-controls">
+                        <span class="sort-label">Sort by:</span>
+                        <button class="sort-btn active">Name</button>
+                        <button class="sort-btn">Calories</button>
+                        <button class="sort-btn">Protein</button>
+                        <button class="sort-btn">Sodium</button>
+                        <button class="sort-btn">Carbs</button>
+                    </div>
+
+                    <div class="food-list">
+                        <div class="food-card-list selected">
+                            <div class="check">✓</div>
+                            <div class="name">Chicken</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">180</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">32g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">310mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list">
+                            <div class="check">✓</div>
+                            <div class="name">Steak</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">150</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">21g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">320mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list selected">
+                            <div class="check">✓</div>
+                            <div class="name">White Rice</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">210</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">4g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">350mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list">
+                            <div class="check">✓</div>
+                            <div class="name">Brown Rice</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">210</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">5g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">210mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list">
+                            <div class="check">✓</div>
+                            <div class="name">Black Beans</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">130</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">8g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">250mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list selected">
+                            <div class="check">✓</div>
+                            <div class="name">Pinto Beans</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">130</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">8g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">230mg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-card-list">
+                            <div class="check">✓</div>
+                            <div class="name">Fajita Veggies</div>
+                            <div class="info">
+                                <div class="info-item">
+                                    <span class="info-label">Cal</span>
+                                    <span class="info-value">20</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Pro</span>
+                                    <span class="info-value">1g</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Na</span>
+                                    <span class="info-value">170mg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nutrition-card">
+                        <h2>Nutrition Facts</h2>
+                        <div class="nutrition-section thick">
+                            <div class="nutrition-row">
+                                <span class="calories-big">840</span>
+                                <span>Calories</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section medium">
+                            <div class="nutrition-row">
+                                <span style="font-size: 12px; color: #718096;">% Daily Value</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Fat</strong> 28g</span>
+                                <strong>36%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Sodium</strong> 1,820mg</span>
+                                <strong>79%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Carbs</strong> 82g</span>
+                                <strong>30%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section" style="border: none;">
+                            <div class="nutrition-row">
+                                <span><strong>Protein</strong> 48g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 3: Minimal Pills (Ultra Clean) -->
+    <div class="mockup-wrapper">
+        <div class="mockup-info">
+            <div class="mockup-label">Option 3: Minimal Pills (Ultra Clean)</div>
+            <div class="mockup-description">
+                <strong>Best for:</strong> Maximum simplicity, modern aesthetic, fast interaction<br>
+                <strong>Changes:</strong> Tag-like pills, flows naturally, ultra minimal (just name), color only shows on selection
+            </div>
+        </div>
+        <div class="page-mockup">
+            <h1 class="service-title">Chipotle</h1>
+
+            <div class="layout-grid">
+                <div>
+                    <div class="sort-controls">
+                        <span class="sort-label">Sort by:</span>
+                        <button class="sort-btn active">Name</button>
+                        <button class="sort-btn">Calories</button>
+                        <button class="sort-btn">Protein</button>
+                        <button class="sort-btn">Sodium</button>
+                        <button class="sort-btn">Carbs</button>
+                    </div>
+
+                    <div class="food-pills">
+                        <div class="food-pill selected">
+                            <div class="check">✓</div>
+                            <span>Chicken</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Steak</span>
+                        </div>
+                        <div class="food-pill selected">
+                            <div class="check">✓</div>
+                            <span>White Rice</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Brown Rice</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Black Beans</span>
+                        </div>
+                        <div class="food-pill selected">
+                            <div class="check">✓</div>
+                            <span>Pinto Beans</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Fajita Veggies</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Cheese</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Sour Cream</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Guacamole</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Mild Salsa</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Corn Salsa</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Medium Salsa</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Hot Salsa</span>
+                        </div>
+                        <div class="food-pill">
+                            <div class="check">✓</div>
+                            <span>Lettuce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nutrition-card">
+                        <h2>Nutrition Facts</h2>
+                        <div class="nutrition-section thick">
+                            <div class="nutrition-row">
+                                <span class="calories-big">840</span>
+                                <span>Calories</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section medium">
+                            <div class="nutrition-row">
+                                <span style="font-size: 12px; color: #718096;">% Daily Value</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Fat</strong> 28g</span>
+                                <strong>36%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Sodium</strong> 1,820mg</span>
+                                <strong>79%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section">
+                            <div class="nutrition-row">
+                                <span><strong>Total Carbs</strong> 82g</span>
+                                <strong>30%</strong>
+                            </div>
+                        </div>
+                        <div class="nutrition-section" style="border: none;">
+                            <div class="nutrition-row">
+                                <span><strong>Protein</strong> 48g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

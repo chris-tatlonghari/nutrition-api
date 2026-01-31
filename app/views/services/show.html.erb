@@ -8,21 +8,36 @@
 
             <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
 
-            <div class="food-item-grid">
+            <div class="sort-controls">
+                <span class="sort-label">Sort by:</span>
+                <button type="button" class="sort-btn active">Name</button>
+                <button type="button" class="sort-btn">Calories</button>
+                <button type="button" class="sort-btn">Protein</button>
+                <button type="button" class="sort-btn">Sodium</button>
+                <button type="button" class="sort-btn">Carbs</button>
+            </div>
+
+            <div class="food-item-list">
                 <% @food_items.each do |food_item| %>
-                    <div class="checkbox food-item-option">
-                        <label class="food-item-card">
-                            <%= check_box_tag "food_item_ids[]",
-                                food_item.id,
-                                selected_ids.include?(food_item.id),
-                                class: "food-item-checkbox",
-                                data: { action: "change->autosubmit#submit" } %>
-                            <span class="food-item-name">
-                                <span class="food-item-check">✓</span>
-                                <span class="food-item-label"><%= food_item.name %></span>
-                            </span>
-                        </label>
-                    </div>
+                    <label class="food-item-card-list <%= 'selected' if selected_ids.include?(food_item.id) %>" data-controller="food-item" data-food-item-card>
+                        <%= check_box_tag "food_item_ids[]",
+                            food_item.id,
+                            selected_ids.include?(food_item.id),
+                            class: "food-item-checkbox-list",
+                            data: { action: "change->food-item#toggle change->autosubmit#submit" } %>
+                        <span class="food-item-check-list">✓</span>
+                        <span class="food-item-name-list"><%= food_item.name %></span>
+                        <div class="food-item-info">
+                            <div class="info-item">
+                                <span class="info-label">Cal</span>
+                                <span class="info-value"><%= food_item.calories %></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Sodium</span>
+                                <span class="info-value"><%= food_item.sodium_mg %>mg</span>
+                            </div>
+                        </div>
+                    </label>
                 <% end %>
             </div>
 
