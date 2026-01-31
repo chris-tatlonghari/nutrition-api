@@ -178,6 +178,67 @@ h2 {
     max-width: 600px;
 }
 
+.home-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-header-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.home-header-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.home-header-icon:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.home-header-icon:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.home-header-accent {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--nutrition-teal), var(--nutrition-red));
+    margin: 0 auto 24px;
+    border-radius: 2px;
+}
+
+.home-header-title {
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--nutrition-ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    text-transform: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.home-header-title strong {
+    font-weight: 700;
+    color: var(--nutrition-red);
+}
+
+.home-header-subtitle {
+    font-size: 16px;
+    color: rgb(120 120 120);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
 .home-search-form {
     width: 100%;
 }
@@ -390,6 +451,20 @@ h2 {
 }
 
 @media (max-width: 768px) {
+    .home-header-icons {
+        font-size: 30px;
+        gap: 16px;
+    }
+
+    .home-header-title {
+        font-size: 32px;
+    }
+
+    .home-header-subtitle {
+        font-size: 15px;
+        padding: 0 20px;
+    }
+
     .home-search-input {
         padding: 14px 20px 14px 48px;
         font-size: 1rem;

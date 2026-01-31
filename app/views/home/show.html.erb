@@ -1,12 +1,23 @@
 <div class="home-search-container">
     <div class="home-search-content">
+        <div class="home-header">
+            <div class="home-header-icons">
+                <span class="home-header-icon">🥗</span>
+                <span class="home-header-icon">🍕</span>
+                <span class="home-header-icon">🌮</span>
+            </div>
+            <div class="home-header-accent"></div>
+            <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+            <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+        </div>
+
         <%= search_form_for @q, url: services_path, method: :get, class: "home-search-form" do |f| %>
             <div class="search-input-wrapper">
                 <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <path d="m21 21-4.35-4.35"></path>
                 </svg>
-                <%= f.search_field :name_cont, placeholder: "Search for a service...", class: "home-search-input", autofocus: true %>
+                <%= f.search_field :name_cont, placeholder: "Search for a restaurant...", class: "home-search-input", autofocus: true %>
             </div>
         <% end %>
     </div>
