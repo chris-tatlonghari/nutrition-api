@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .palette-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .palette-label {
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .palette-description {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .color-swatches {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            flex: 1;
+            min-width: 100px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .mockup-container {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Common styles */
+        .home-search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .home-search-content {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .home-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .home-header-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .home-header-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .home-header-icon:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .home-header-icon:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .home-header-accent {
+            width: 60px;
+            height: 4px;
+            margin: 0 auto 24px;
+            border-radius: 2px;
+        }
+
+        .home-header-title {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .home-header-title strong {
+            font-weight: 700;
+        }
+
+        .home-header-subtitle {
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #777;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 52px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: #999;
+        }
+
+        /* Palette 1: Ocean Depth (Navy & Teal) */
+        .palette-1 .home-header-accent {
+            background: linear-gradient(90deg, #0EA5E9, #1E40AF);
+        }
+
+        .palette-1 .home-header-title {
+            color: #1e293b;
+        }
+
+        .palette-1 .home-header-title strong {
+            color: #1E40AF;
+        }
+
+        .palette-1 .search-input:focus {
+            border-color: #0EA5E9;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Palette 2: Forest Green (Professional Green) */
+        .palette-2 .home-header-accent {
+            background: linear-gradient(90deg, #10B981, #059669);
+        }
+
+        .palette-2 .home-header-title {
+            color: #1e293b;
+        }
+
+        .palette-2 .home-header-title strong {
+            color: #059669;
+        }
+
+        .palette-2 .search-input:focus {
+            border-color: #10B981;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Palette 3: Royal Purple (Modern & Premium) */
+        .palette-3 .home-header-accent {
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+        }
+
+        .palette-3 .home-header-title {
+            color: #1e293b;
+        }
+
+        .palette-3 .home-header-title strong {
+            color: #7C3AED;
+        }
+
+        .palette-3 .search-input:focus {
+            border-color: #8B5CF6;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15);
+        }
+
+        /* Palette 4: Slate & Cyan (Minimalist Tech) */
+        .palette-4 .home-header-accent {
+            background: linear-gradient(90deg, #06B6D4, #475569);
+        }
+
+        .palette-4 .home-header-title {
+            color: #334155;
+        }
+
+        .palette-4 .home-header-title strong {
+            color: #0891B2;
+        }
+
+        .palette-4 .search-input:focus {
+            border-color: #06B6D4;
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Palette 5: Midnight & Coral (Bold & Contemporary) */
+        .palette-5 .home-header-accent {
+            background: linear-gradient(90deg, #F43F5E, #1E293B);
+        }
+
+        .palette-5 .home-header-title {
+            color: #1E293B;
+        }
+
+        .palette-5 .home-header-title strong {
+            color: #E11D48;
+        }
+
+        .palette-5 .search-input:focus {
+            border-color: #F43F5E;
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.15);
+        }
+
+        /* Palette 6: Sage & Olive (Organic & Natural) */
+        .palette-6 .home-header-accent {
+            background: linear-gradient(90deg, #84CC16, #65A30D);
+        }
+
+        .palette-6 .home-header-title {
+            color: #3f6212;
+        }
+
+        .palette-6 .home-header-title strong {
+            color: #65A30D;
+        }
+
+        .palette-6 .search-input:focus {
+            border-color: #84CC16;
+            box-shadow: 0 6px 20px rgba(132, 204, 22, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .home-header-icons {
+                font-size: 30px;
+                gap: 16px;
+            }
+
+            .home-header-title {
+                font-size: 32px;
+            }
+
+            .home-header-subtitle {
+                font-size: 15px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Palette 1: Ocean Depth -->
+    <div class="palette-section">
+        <div class="palette-label">Option 1: Ocean Depth</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Trustworthy, professional, calming. Perfect for health & wellness apps.
+            <strong>Psychology:</strong> Blue conveys trust and reliability, commonly used in healthcare and tech.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #1E40AF;">Primary Navy</div>
+            <div class="color-swatch" style="background: #0EA5E9;">Secondary Sky</div>
+            <div class="color-swatch" style="background: #1e293b;">Text Slate</div>
+        </div>
+        <div class="mockup-container palette-1">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette 2: Forest Green -->
+    <div class="palette-section">
+        <div class="palette-label">Option 2: Forest Green</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Fresh, healthy, growth-oriented. Natural fit for nutrition apps.
+            <strong>Psychology:</strong> Green represents health, nature, and balance. Highly appropriate for food & wellness.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #059669;">Primary Forest</div>
+            <div class="color-swatch" style="background: #10B981;">Secondary Emerald</div>
+            <div class="color-swatch" style="background: #1e293b;">Text Slate</div>
+        </div>
+        <div class="mockup-container palette-2">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette 3: Royal Purple -->
+    <div class="palette-section">
+        <div class="palette-label">Option 3: Royal Purple</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Premium, innovative, creative. Modern tech feel with sophistication.
+            <strong>Psychology:</strong> Purple conveys luxury and wisdom. Less common in nutrition apps, so stands out uniquely.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #7C3AED;">Primary Violet</div>
+            <div class="color-swatch" style="background: #8B5CF6;">Secondary Purple</div>
+            <div class="color-swatch" style="background: #6366F1;">Tertiary Indigo</div>
+        </div>
+        <div class="mockup-container palette-3">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette 4: Slate & Cyan -->
+    <div class="palette-section">
+        <div class="palette-label">Option 4: Slate & Cyan</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Minimalist, professional, tech-forward. Clean and modern like Figma or Linear.
+            <strong>Psychology:</strong> Gray + cyan creates a sophisticated, no-nonsense feel. Very contemporary.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #0891B2;">Primary Cyan</div>
+            <div class="color-swatch" style="background: #06B6D4;">Secondary Teal</div>
+            <div class="color-swatch" style="background: #334155;">Text Slate</div>
+        </div>
+        <div class="mockup-container palette-4">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette 5: Midnight & Coral -->
+    <div class="palette-section">
+        <div class="palette-label">Option 5: Midnight & Coral</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Bold, contemporary, energetic. Strong contrast creates visual impact.
+            <strong>Psychology:</strong> Dark navy provides elegance while coral adds warmth and energy. Balanced sophistication.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #E11D48;">Primary Rose</div>
+            <div class="color-swatch" style="background: #F43F5E;">Secondary Coral</div>
+            <div class="color-swatch" style="background: #1E293B;">Text Midnight</div>
+        </div>
+        <div class="mockup-container palette-5">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette 6: Sage & Olive -->
+    <div class="palette-section">
+        <div class="palette-label">Option 6: Sage & Olive</div>
+        <div class="palette-description">
+            <strong>Vibe:</strong> Organic, earthy, wellness-focused. Natural and approachable.
+            <strong>Psychology:</strong> Muted greens feel organic and authentic. Less tech, more natural/holistic approach.
+        </div>
+        <div class="color-swatches">
+            <div class="color-swatch" style="background: #65A30D;">Primary Olive</div>
+            <div class="color-swatch" style="background: #84CC16;">Secondary Lime</div>
+            <div class="color-swatch" style="background: #3f6212;">Text Forest</div>
+        </div>
+        <div class="mockup-container palette-6">
+            <div class="home-search-container">
+                <div class="home-search-content">
+                    <div class="home-header">
+                        <div class="home-header-icons">
+                            <span class="home-header-icon">🥗</span>
+                            <span class="home-header-icon">🍕</span>
+                            <span class="home-header-icon">🌮</span>
+                        </div>
+                        <div class="home-header-accent"></div>
+                        <h1 class="home-header-title">Your <strong>Nutrition</strong> Calculator</h1>
+                        <p class="home-header-subtitle">Discover comprehensive nutritional information across all your favorite restaurant chains.</p>
+                    </div>
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search for a restaurant...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

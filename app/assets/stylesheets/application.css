@@ -15,14 +15,14 @@
  */
 
 :root {
-    --nutrition-red: rgb(168 21 42);
-    --nutrition-red-dark: rgb(126 15 31);
-    --nutrition-red-light: rgb(208 68 82);
-    --nutrition-teal: rgb(0 118 128);
-    --nutrition-teal-dark: rgb(0 86 94);
-    --nutrition-amber: rgb(217 140 53);
-    --nutrition-cream: rgb(255 249 245);
-    --nutrition-ink: rgb(28 22 22);
+    --nutrition-primary: rgb(101 163 13);
+    --nutrition-primary-dark: rgb(63 98 18);
+    --nutrition-primary-light: rgb(132 204 22);
+    --nutrition-secondary: rgb(132 204 22);
+    --nutrition-secondary-dark: rgb(101 163 13);
+    --nutrition-accent: rgb(163 230 53);
+    --nutrition-cream: rgb(247 254 231);
+    --nutrition-ink: rgb(63 98 18);
 }
 
 * {
@@ -37,7 +37,7 @@ body {
 
 h1, h2, h4, h6 {
     margin: 0px 0px 5px 0px;
-    color: var(--nutrition-red);
+    color: var(--nutrition-primary-dark);
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -122,12 +122,12 @@ h2 {
 }
 
 .nutrition-body {
-    background: radial-gradient(circle at 18% 12%, var(--nutrition-cream) 0%, rgb(255 255 255) 35%, rgb(245 245 245) 75%, rgb(0 118 128 / 6%) 100%);
+    background: radial-gradient(circle at 18% 12%, var(--nutrition-cream) 0%, rgb(255 255 255) 35%, rgb(245 245 245) 75%, rgba(132, 204, 22, 0.06) 100%);
     color: var(--nutrition-ink);
 }
 
 .navbar-nutrition {
-    background: linear-gradient(110deg, var(--nutrition-red-dark) 0%, var(--nutrition-red) 50%, var(--nutrition-amber) 50%, var(--nutrition-amber) 100%);
+    background: linear-gradient(110deg, var(--nutrition-primary-dark) 0%, var(--nutrition-secondary-dark) 50%, var(--nutrition-secondary) 50%, var(--nutrition-accent) 100%);
     box-shadow: 0 14px 30px rgb(0 0 0 / 16%);
 }
 
@@ -154,7 +154,7 @@ h2 {
 
 .btn-login {
     background: var(--nutrition-cream);
-    color: var(--nutrition-red-dark);
+    color: var(--nutrition-primary-dark);
     border: 1px solid rgb(255 255 255 / 45%);
     font-weight: 600;
 }
@@ -162,7 +162,21 @@ h2 {
 .btn-login:hover,
 .btn-login:focus {
     background: rgb(255 255 255);
-    color: var(--nutrition-red);
+    color: var(--nutrition-primary-dark);
+}
+
+.btn-nutrition {
+    background: var(--nutrition-primary);
+    color: rgb(255 255 255);
+    border: 1px solid var(--nutrition-primary);
+    font-weight: 600;
+}
+
+.btn-nutrition:hover,
+.btn-nutrition:focus {
+    background: var(--nutrition-primary-dark);
+    border-color: var(--nutrition-primary-dark);
+    color: rgb(255 255 255);
 }
 
 .home-search-container {
@@ -211,7 +225,7 @@ h2 {
 .home-header-accent {
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, var(--nutrition-teal), var(--nutrition-red));
+    background: linear-gradient(90deg, var(--nutrition-secondary), var(--nutrition-primary));
     margin: 0 auto 24px;
     border-radius: 2px;
 }
@@ -228,7 +242,7 @@ h2 {
 
 .home-header-title strong {
     font-weight: 700;
-    color: var(--nutrition-red);
+    color: var(--nutrition-primary-dark);
 }
 
 .home-header-subtitle {
@@ -272,8 +286,8 @@ h2 {
 
 .home-search-input:focus {
     outline: none;
-    border-color: var(--nutrition-teal);
-    box-shadow: 0 6px 20px rgb(0 118 128 / 15%);
+    border-color: var(--nutrition-secondary);
+    box-shadow: 0 6px 20px rgba(132, 204, 22, 0.15);
 }
 
 .search-input-wrapper .form-control {
@@ -365,20 +379,20 @@ h2 {
 }
 
 .food-item-checkbox:checked + .food-item-name {
-    color: var(--nutrition-red);
-    border-color: var(--nutrition-red-light);
-    box-shadow: 0 14px 28px rgb(168 21 42 / 20%);
+    color: var(--nutrition-primary-dark);
+    border-color: var(--nutrition-primary-light);
+    box-shadow: 0 14px 28px rgba(101, 163, 13, 0.20);
     transform: translateY(-1px);
 }
 
 .food-item-checkbox:checked + .food-item-name .food-item-check {
     color: rgb(255 255 255);
-    border-color: var(--nutrition-red);
-    background: radial-gradient(circle, var(--nutrition-red) 0%, var(--nutrition-red-light) 70%);
+    border-color: var(--nutrition-primary);
+    background: radial-gradient(circle, var(--nutrition-primary) 0%, var(--nutrition-primary-light) 70%);
 }
 
 .food-item-checkbox:focus-visible + .food-item-name {
-    outline: 3px solid rgb(0 118 128 / 28%);
+    outline: 3px solid rgba(132, 204, 22, 0.28);
     outline-offset: 2px;
 }
 
@@ -402,7 +416,7 @@ h2 {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--nutrition-red) 0%, var(--nutrition-amber) 100%);
+    background: linear-gradient(135deg, var(--nutrition-primary) 0%, var(--nutrition-secondary) 100%);
     color: rgb(255 255 255);
     display: inline-flex;
     align-items: center;
@@ -434,7 +448,7 @@ h2 {
 
 .footer-links a:hover,
 .footer-links a:focus {
-    color: var(--nutrition-red);
+    color: var(--nutrition-primary-dark);
 }
 
 .footer-bottom {
