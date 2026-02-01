@@ -91,6 +91,10 @@ h2 {
     float: right;
 }
 
+.nutrition-fact-title {
+    color: rgb(100, 100, 100)
+}
+
 .nutrition-info {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
@@ -366,10 +370,11 @@ h2 {
 }
 
 .sort-btn.active {
-    background: linear-gradient(135deg, var(--nutrition-primary) 0%, var(--nutrition-primary-dark) 100%);
+    background: white;
     border-color: var(--nutrition-primary);
-    color: white;
-    box-shadow: 0 4px 16px rgba(101, 163, 13, 0.3);
+    border-width: 3px;
+    color: var(--nutrition-primary-dark);
+    box-shadow: 0 4px 16px rgba(101, 163, 13, 0.2);
 }
 
 .sort-icon {
@@ -398,7 +403,8 @@ h2 {
 }
 
 .sort-btn.active .sort-icon {
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--nutrition-primary);
+    color: white;
 }
 
 .sort-text {
