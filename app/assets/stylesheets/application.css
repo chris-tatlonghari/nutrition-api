@@ -731,4 +731,144 @@ h2 {
     .food-item-info .info-item {
         min-width: 40px;
     }
+
+    .category-chip {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .category-badge {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+}
+
+.control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-chip {
+    background: white;
+    border: 2px solid rgb(226 232 240);
+    color: rgb(74 85 104);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.category-chip:hover {
+    border-color: var(--nutrition-secondary);
+    box-shadow: 0 6px 20px rgba(107, 142, 78, 0.2);
+    text-decoration: none;
+    color: rgb(74 85 104);
+}
+
+.category-chip.active {
+    background: white;
+    border-color: var(--nutrition-primary);
+    border-width: 3px;
+    color: var(--nutrition-primary-dark);
+    box-shadow: 0 4px 16px rgba(101, 163, 13, 0.2);
+}
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgb(102 102 102);
+    background: rgb(245 245 245);
+    padding: 6px 12px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.service-card {
+    background: white;
+    border-radius: 16px;
+    border: 2px solid rgb(226 232 240);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    border-color: var(--nutrition-primary);
+    box-shadow: 0 8px 20px rgba(101, 163, 13, 0.15);
+}
+
+.service-card-body {
+    padding: 24px;
+}
+
+.service-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.service-card-category {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: rgb(107 114 128);
+    background: rgb(243 244 246);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.service-card-emoji {
+    font-size: 48px;
+}
+
+.service-card-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.service-card-divider {
+    border: 0;
+    border-top: 1px solid rgb(229 231 235);
+    margin: 20px 0;
+}
+
+.service-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-card-count {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(107 114 128);
+}
+
+.service-card-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--nutrition-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.service-card-link:hover {
+    color: var(--nutrition-primary-dark);
 }

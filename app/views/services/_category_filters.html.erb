@@ -1,0 +1,13 @@
+<div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+
+  <% (Service.categories.keys - ["other"]).each do |category| %>
+    <% is_active = params.dig(:q, :category_eq) == category %>
+    <% url = is_active ? services_path(q: { name_cont: params.dig(:q, :name_cont) }.compact) : services_path(q: { name_cont: params.dig(:q, :name_cont), category_eq: category }.compact) %>
+
+    <%= link_to url, class: "category-chip #{is_active ? 'active' : ''}" do %>
+      <%= Service::CATEGORY_EMOJIS[category.to_sym] %> <%= category.humanize %>
+    <% end %>
+
+  <% end %>
+
+</div>
