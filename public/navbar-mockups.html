@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Mockup Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .mockup-section {
+            margin-bottom: 80px;
+        }
+
+        .mockup-label {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .mockup-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .navbar-preview {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .page-preview {
+            height: 400px;
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Color variables - matching your green palette */
+        :root {
+            --green-primary: rgb(101, 163, 13);
+            --green-dark: rgb(63, 98, 18);
+            --green-light: rgb(132, 204, 22);
+            --green-accent: rgb(163, 230, 53);
+            --green-cream: rgb(247, 254, 231);
+        }
+
+        /* Common navbar styles */
+        .navbar {
+            padding: 16px 0;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar-brand {
+            font-family: "Bebas Neue", Impact, sans-serif;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* Option 1: Clean White with Green Accents */
+        .navbar-option1 {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .navbar-option1 .navbar-brand {
+            color: var(--green-primary);
+        }
+
+        .navbar-option1 .navbar-link {
+            color: #333;
+        }
+
+        .navbar-option1 .navbar-link:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option1 .btn-login {
+            background: transparent;
+            color: #000;
+            border-color: transparent;
+            font-weight: 700;
+        }
+
+        .navbar-option1 .btn-login:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option1 .btn-signup {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        .navbar-option1 .btn-signup:hover {
+            background: var(--green-dark);
+        }
+
+        /* Option 2: White with Subtle Shadow */
+        .navbar-option2 {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .navbar-option2 .navbar-brand {
+            color: var(--green-primary);
+        }
+
+        .navbar-option2 .navbar-link {
+            color: #555;
+        }
+
+        .navbar-option2 .navbar-link:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option2 .btn-login {
+            background: transparent;
+            color: var(--green-primary);
+            border-color: var(--green-primary);
+        }
+
+        .navbar-option2 .btn-login:hover {
+            background: var(--green-cream);
+        }
+
+        .navbar-option2 .btn-signup {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        .navbar-option2 .btn-signup:hover {
+            background: var(--green-dark);
+        }
+
+        /* Option 3: Minimal with Green Underline */
+        .navbar-option3 {
+            background: white;
+            border-bottom: 3px solid var(--green-primary);
+        }
+
+        .navbar-option3 .navbar-brand {
+            color: #222;
+        }
+
+        .navbar-option3 .navbar-brand span {
+            color: var(--green-primary);
+        }
+
+        .navbar-option3 .navbar-link {
+            color: #444;
+            position: relative;
+        }
+
+        .navbar-option3 .navbar-link:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option3 .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green-primary);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-option3 .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-option3 .btn-login {
+            background: transparent;
+            color: #333;
+        }
+
+        .navbar-option3 .btn-login:hover {
+            background: #f5f5f5;
+        }
+
+        .navbar-option3 .btn-signup {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        .navbar-option3 .btn-signup:hover {
+            background: var(--green-dark);
+        }
+
+        /* Option 4: Ultra Minimal DoorDash Style */
+        .navbar-option4 {
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .navbar-option4 .navbar-brand {
+            color: var(--green-primary);
+            font-size: 22px;
+        }
+
+        .navbar-option4 .navbar-link {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .navbar-option4 .navbar-link:hover {
+            color: #222;
+        }
+
+        .navbar-option4 .btn-login {
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .navbar-option4 .btn-login:hover {
+            background: #fafafa;
+        }
+
+        .navbar-option4 .btn-signup {
+            background: var(--green-primary);
+            color: white;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .navbar-option4 .btn-signup:hover {
+            background: var(--green-dark);
+        }
+
+        /* Option 5: Cream Background with Green Accents */
+        .navbar-option5 {
+            background: #fafaf8;
+            border-bottom: 1px solid #eaeae8;
+        }
+
+        .navbar-option5 .navbar-brand {
+            color: var(--green-dark);
+        }
+
+        .navbar-option5 .navbar-link {
+            color: #555;
+        }
+
+        .navbar-option5 .navbar-link:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option5 .btn-login {
+            background: white;
+            color: #333;
+        }
+
+        .navbar-option5 .btn-login:hover {
+            background: #f5f5f5;
+        }
+
+        .navbar-option5 .btn-signup {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        .navbar-option5 .btn-signup:hover {
+            background: var(--green-dark);
+        }
+
+        /* Option 6: Only Login Button (No Signup) */
+        .navbar-option6 {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .navbar-option6 .navbar-brand {
+            color: var(--green-primary);
+        }
+
+        .navbar-option6 .navbar-link {
+            color: #444;
+        }
+
+        .navbar-option6 .navbar-link:hover {
+            color: var(--green-primary);
+        }
+
+        .navbar-option6 .btn-login {
+            background: var(--green-cream);
+            color: var(--green-dark);
+            border-color: transparent;
+        }
+
+        .navbar-option6 .btn-login:hover {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .btn {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Option 1: Clean White with Green Accents -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 1: Clean White with Green Accents</div>
+        <div class="mockup-description">
+            Most similar to DoorDash. White background, green logo, subtle text links, and a bold green signup button. Login has bold black text for a strong, clear call-to-action.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option1">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITIONFAX</a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+    <!-- Option 2: White with Subtle Shadow -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 2: White with Subtle Shadow</div>
+        <div class="mockup-description">
+            Slightly elevated navbar with a soft shadow. Green outlined login button gives it more presence while keeping the focus on the solid green signup.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option2">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITIONFAX</a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+    <!-- Option 3: Minimal with Green Underline -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 3: Minimal with Green Underline</div>
+        <div class="mockup-description">
+            Bold green accent line at the bottom gives the navbar definition. Links have a subtle hover underline animation. Very clean and modern.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option3">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITION<span>FAX</span></a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+    <!-- Option 4: Ultra Minimal DoorDash Style -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 4: Ultra Minimal (Closest to DoorDash)</div>
+        <div class="mockup-description">
+            This is the most DoorDash-like option. Smaller text, lighter colors, and buttons with similar styling to DoorDash's "Delivery" and cart buttons.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option4">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITIONFAX</a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+    <!-- Option 5: Cream Background -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 5: Warm Cream Background</div>
+        <div class="mockup-description">
+            Uses a subtle warm cream background instead of pure white. Feels softer and more organic while still maintaining the clean aesthetic.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option5">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITIONFAX</a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+    <!-- Option 6: Only Login (No Signup) -->
+    <div class="mockup-section">
+        <div class="mockup-label">Option 6: Login Only (If You Decide Against Signup)</div>
+        <div class="mockup-description">
+            In case you want to keep just the login button. Uses your cream color for the button with darker green text, giving it presence without being too bold.
+        </div>
+        <div class="navbar-preview">
+            <nav class="navbar navbar-option6">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <a href="#" class="navbar-brand">NUTRITIONFAX</a>
+                        <ul class="navbar-links">
+                            <li><a href="#" class="navbar-link">Home</a></li>
+                            <li><a href="#" class="navbar-link">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-right">
+                        <a href="#" class="btn btn-login">Login</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-preview">Page content would appear here</div>
+        </div>
+    </div>
+
+</body>
+</html>

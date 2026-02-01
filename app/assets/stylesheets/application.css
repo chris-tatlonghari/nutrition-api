@@ -127,42 +127,70 @@ h2 {
 }
 
 .navbar-nutrition {
-    background: linear-gradient(110deg, var(--nutrition-primary-dark) 0%, var(--nutrition-secondary-dark) 50%, var(--nutrition-secondary) 50%, var(--nutrition-accent) 100%);
-    box-shadow: 0 14px 30px rgb(0 0 0 / 16%);
+    background: rgb(255 255 255);
+    border-bottom: 1px solid rgb(229 229 229);
 }
 
 .navbar-nutrition .navbar-brand {
     font-family: "Bebas Neue", sans-serif;
     font-size: 1.6rem;
     letter-spacing: 0.04em;
+    color: var(--nutrition-primary);
 }
 
 .navbar-nutrition .nav-link {
-    color: rgb(255 255 255 / 88%);
+    color: rgb(51 51 51);
     font-weight: 500;
     letter-spacing: 0.02em;
+    transition: color 0.2s ease;
 }
 
 .navbar-nutrition .nav-link:hover,
 .navbar-nutrition .nav-link:focus {
-    color: rgb(255 255 255);
+    color: var(--nutrition-primary);
 }
 
 .navbar-nutrition .nav-link.active {
-    color: rgb(255 255 255);
+    color: var(--nutrition-primary);
+}
+
+.navbar-nutrition .navbar-toggler {
+    border-color: rgb(229 229 229);
+}
+
+.navbar-nutrition .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2851, 51, 51, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .btn-login {
-    background: var(--nutrition-cream);
-    color: var(--nutrition-primary-dark);
-    border: 1px solid rgb(255 255 255 / 45%);
-    font-weight: 600;
+    background: transparent;
+    color: rgb(0 0 0);
+    border: 2px solid transparent;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 24px;
+    transition: color 0.2s ease;
 }
 
 .btn-login:hover,
 .btn-login:focus {
-    background: rgb(255 255 255);
-    color: var(--nutrition-primary-dark);
+    color: var(--nutrition-primary);
+}
+
+.btn-signup {
+    background: var(--nutrition-primary);
+    color: rgb(255 255 255);
+    border: 2px solid transparent;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 24px;
+    transition: background 0.2s ease;
+}
+
+.btn-signup:hover,
+.btn-signup:focus {
+    background: var(--nutrition-primary-dark);
+    color: rgb(255 255 255);
 }
 
 .btn-nutrition {
