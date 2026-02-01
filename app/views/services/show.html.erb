@@ -1,7 +1,6 @@
-<h1 class="service-title"><%= @service.name %></h1>
-
 <div class="row service-layout">
     <div class="col-sm-7 col-xs-12">
+        <h1 class="service-title"><%= @service.name %></h1>
         <%= form_with url: service_path(@service),
                     method: :get,
                     data: { controller: "autosubmit", turbo_frame: "nutrition_facts" } do %>

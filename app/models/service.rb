@@ -21,7 +21,10 @@ class Service < ApplicationRecord
     other: "other"
   }, _default: "other"
 
-  has_many :food_items
+  has_many :food_items, dependent: :restrict_with_error
+
+  validates :name, presence: true, uniqueness: true
+  validates :category, presence: true
 
   def self.ransackable_attributes(*) = %w[name category]
 

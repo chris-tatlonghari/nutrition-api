@@ -1,0 +1,15 @@
+<aside class="admin-sidebar">
+  <div class="logo">
+    🥗 NutritionFax Admin
+  </div>
+
+  <nav>
+    <%= link_to admin_root_path, class: "nav-link #{active_link_class(admin_root_path)}" do %>
+      <span>📊 Dashboard</span>
+    <% end %>
+
+    <%= link_to admin_services_path, class: "nav-link #{active_link_class(admin_services_path)}" do %>
+      <span>🍽️ Services</span>
+    <% end %>
+  </nav>
+</aside>

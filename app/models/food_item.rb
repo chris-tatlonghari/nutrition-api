@@ -32,6 +32,21 @@
 #  service_id  (service_id => services.id)
 #
 class FoodItem < ApplicationRecord
+  belongs_to :service
+
+  validates :name, presence: true, uniqueness: { scope: :service_id }
+  validates :serving_size, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :calories, numericality: { greater_than_or_equal_to: 0, only_integer: true, allow_nil: true }
+  validates :calories_from_fat, numericality: { greater_than_or_equal_to: 0, only_integer: true, allow_nil: true }
+  validates :protein_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :carbs_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :fat_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :saturated_fat_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :fiber_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :sugar_g, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :sodium_mg, numericality: { greater_than_or_equal_to: 0, only_integer: true, allow_nil: true }
+  validates :cholesterol_mg, numericality: { greater_than_or_equal_to: 0, only_integer: true, allow_nil: true }
+
   def self.ransackable_attributes(*) = %w[name calories protein_g sodium_mg carbs_g]
 
   def self.ransackable_associations(*) = []

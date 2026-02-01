@@ -1,0 +1,9 @@
+<% content_for :breadcrumbs do %>
+  <li class="breadcrumb-item"><%= link_to "Services", admin_services_path %></li>
+  <li class="breadcrumb-item"><%= link_to @service.name, admin_service_path(@service) %></li>
+  <li class="breadcrumb-item active">Edit <%= @food_item.name %></li>
+<% end %>
+
+<h1 class="mb-4">Edit <%= @food_item.name %></h1>
+
+<%= render "form", service: @service, food_item: @food_item %>

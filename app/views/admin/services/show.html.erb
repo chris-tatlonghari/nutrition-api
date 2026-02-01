@@ -1,0 +1,82 @@
+<% content_for :breadcrumbs do %>
+  <li class="breadcrumb-item"><%= link_to "Services", admin_services_path %></li>
+  <li class="breadcrumb-item active"><%= @service.name %></li>
+<% end %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1><%= @service.name %></h1>
+    <p class="text-muted mb-0">
+      <span class="category-badge">
+        <%= Service::CATEGORY_EMOJIS[@service.category.to_sym] %>
+        <%= @service.category.titleize %>
+      </span>
+    </p>
+  </div>
+  <div class="action-buttons">
+    <%= link_to "Edit Service", edit_admin_service_path(@service), class: "btn btn-outline-secondary" %>
+    <%= button_to "Delete Service", admin_service_path(@service),
+                  method: :delete,
+                  class: "btn btn-outline-danger",
+                  form: { data: { turbo_confirm: "Are you sure? This will fail if the service has food items." } } %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="mb-0">Food Items (<%= @food_items.count %>)</h3>
+    <%= link_to "Add Food Item", new_admin_service_food_item_path(@service), class: "btn btn-sm btn-nutrition" %>
+  </div>
+  <div class="card-body p-0">
+    <% if @food_items.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Serving</th>
+              <th>Calories</th>
+              <th>Protein</th>
+              <th>Carbs</th>
+              <th>Fat</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @food_items.each do |food_item| %>
+              <tr>
+                <td class="fw-semibold"><%= food_item.name %></td>
+                <td>
+                  <% if food_item.serving_size.present? %>
+                    <%= food_item.serving_size %><%= " #{food_item.serving_unit}" if food_item.serving_unit.present? %>
+                  <% else %>
+                    <span class="text-muted">-</span>
+                  <% end %>
+                </td>
+                <td><%= food_item.calories || "-" %></td>
+                <td><%= food_item.protein_g ? "#{food_item.protein_g}g" : "-" %></td>
+                <td><%= food_item.carbs_g ? "#{food_item.carbs_g}g" : "-" %></td>
+                <td><%= food_item.fat_g ? "#{food_item.fat_g}g" : "-" %></td>
+                <td>
+                  <div class="action-buttons">
+                    <%= link_to "Edit", edit_admin_service_food_item_path(@service, food_item), class: "btn btn-sm btn-outline-secondary" %>
+                    <%= button_to "Delete", admin_service_food_item_path(@service, food_item),
+                                  method: :delete,
+                                  class: "btn btn-sm btn-outline-danger",
+                                  form: { data: { turbo_confirm: "Are you sure?" } } %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="empty-state">
+        <h3>No food items yet</h3>
+        <p>Add nutrition data for items from this service.</p>
+        <%= link_to "Add Food Item", new_admin_service_food_item_path(@service), class: "btn btn-nutrition" %>
+      </div>
+    <% end %>
+  </div>
+</div>

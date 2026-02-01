@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, service], local: true do |f| %>
+  <%= render "admin/shared/form_errors", object: service %>
+
+  <div class="form-card">
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "e.g., McDonald's, Starbucks" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :category, class: "form-label" %>
+      <%= f.select :category,
+                   options_for_select(
+                     Service.categories.keys.map { |k| [k.titleize, k] },
+                     service.category
+                   ),
+                   { include_blank: "Select a category" },
+                   class: "form-select" %>
+      <div class="form-text">Choose the category that best fits this service</div>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= f.submit "Save Service", class: "btn btn-nutrition" %>
+    <%= link_to "Cancel", service.persisted? ? admin_service_path(service) : admin_services_path, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

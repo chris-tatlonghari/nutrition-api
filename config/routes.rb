@@ -9,4 +9,11 @@ Rails.application.routes.draw do
   root "home#show"
 
   resources :services, only: %i[index show]
+
+  namespace :admin do
+    root to: "services#index"
+    resources :services do
+      resources :food_items, except: [:show]
+    end
+  end
 end

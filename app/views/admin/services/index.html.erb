@@ -1,0 +1,87 @@
+<% content_for :breadcrumbs do %>
+  <li class="breadcrumb-item active">Services</li>
+<% end %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Services</h1>
+  <%= link_to "New Service", new_admin_service_path, class: "btn btn-nutrition" %>
+</div>
+
+<div class="stats-cards">
+  <div class="stat-card">
+    <h3>Total Services</h3>
+    <div class="stat-value"><%= @stats[:total_services] %></div>
+  </div>
+
+  <div class="stat-card">
+    <h3>Total Food Items</h3>
+    <div class="stat-value"><%= @stats[:total_food_items] %></div>
+  </div>
+
+  <div class="stat-card">
+    <h3>Avg Items/Service</h3>
+    <div class="stat-value"><%= number_with_precision(@stats[:avg_items_per_service], precision: 1) %></div>
+  </div>
+</div>
+
+<div class="table-container">
+  <div class="table-header">
+    <h2>All Services</h2>
+    <%= search_form_for @q, url: admin_services_path, html: { class: "d-flex gap-2" } do |f| %>
+      <%= f.search_field :name_cont, placeholder: "Search services...", class: "form-control form-control-sm", style: "width: 250px;" %>
+      <%= f.select :category_eq,
+                   options_for_select(Service.categories.keys.map { |k| [k.titleize, k] }, params.dig(:q, :category_eq)),
+                   { include_blank: "All Categories" },
+                   class: "form-select form-select-sm",
+                   style: "width: 200px;" %>
+      <%= f.submit "Search", class: "btn btn-sm btn-nutrition" %>
+    <% end %>
+  </div>
+
+  <% if @services.any? %>
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Food Items</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td>
+              <%= link_to service.name, admin_service_path(service), class: "fw-semibold text-decoration-none" %>
+            </td>
+            <td>
+              <span class="category-badge">
+                <%= Service::CATEGORY_EMOJIS[service.category.to_sym] %>
+                <%= service.category.titleize %>
+              </span>
+            </td>
+            <td>
+              <%= service.food_items.count %>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <%= link_to "View", admin_service_path(service), class: "btn btn-sm btn-outline-primary" %>
+                <%= link_to "Edit", edit_admin_service_path(service), class: "btn btn-sm btn-outline-secondary" %>
+                <%= button_to "Delete", admin_service_path(service),
+                              method: :delete,
+                              class: "btn btn-sm btn-outline-danger",
+                              form: { data: { turbo_confirm: "Are you sure? This will fail if the service has food items." } } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="empty-state">
+      <h3>No services found</h3>
+      <p>Get started by creating your first service.</p>
+      <%= link_to "Create Service", new_admin_service_path, class: "btn btn-nutrition" %>
+    </div>
+  <% end %>
+</div>
