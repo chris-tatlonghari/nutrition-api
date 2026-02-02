@@ -13,8 +13,13 @@ class ServicesController < ApplicationController
 
     @food_items = @q.result
 
-    selected_ids = Array(params[:food_item_ids]).map(&:to_i)
+    @selected_ids = Array(params[:food_item_ids]).map(&:to_i)
 
-    @nutrition = @service.nutrition(selected_ids)
+    @nutrition = @service.nutrition(@selected_ids)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 end

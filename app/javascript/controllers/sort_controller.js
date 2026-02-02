@@ -9,14 +9,16 @@ export default class extends Controller {
         const isActive = button.classList.contains('active')
         const isDesc = button.classList.contains('desc')
 
+        let newValue
+
         if (isActive) {
             // Toggle direction on the same button
             if (isDesc) {
                 button.classList.remove('desc')
-                button.value = `${field} asc`
+                newValue = `${field} asc`
             } else {
                 button.classList.add('desc')
-                button.value = `${field} desc`
+                newValue = `${field} desc`
             }
         } else {
             // Deactivate all buttons
@@ -29,14 +31,22 @@ export default class extends Controller {
 
             // Name defaults to ascending, numeric fields default to descending
             if (field === 'name') {
-                button.value = `${field} asc`
+                newValue = `${field} asc`
             } else {
                 button.classList.add('desc')
-                button.value = `${field} desc`
+                newValue = `${field} desc`
             }
         }
 
-        // Submit the form
-        button.form.requestSubmit()
+        button.value = newValue
+
+        // Update the hidden field to preserve sort state
+        const hiddenField = button.form.querySelector('input[name="q[s]"]')
+        if (hiddenField) {
+            hiddenField.value = newValue
+        }
+
+        // Submit the form with the button as the submitter
+        button.form.requestSubmit(button)
     }
 }

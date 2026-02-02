@@ -1,0 +1,17 @@
+<%= turbo_stream.replace "food_items_list" do %>
+  <%= turbo_frame_tag "food_items_list" do %>
+    <%= render "food_items_list" %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace "shopping_cart" do %>
+  <turbo-frame id="shopping_cart">
+    <%= render "shopping_cart" %>
+  </turbo-frame>
+<% end %>
+
+<%= turbo_stream.replace "nutrition_facts" do %>
+  <turbo-frame id="nutrition_facts">
+    <%= render "nutrition_facts", nutrition: @nutrition %>
+  </turbo-frame>
+<% end %>
