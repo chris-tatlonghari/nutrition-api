@@ -620,6 +620,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    margin-bottom: 12px;
 }
 
 .food-item-card-list {
