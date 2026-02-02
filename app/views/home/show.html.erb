@@ -20,5 +20,16 @@
                 <%= f.search_field :name_cont, placeholder: "Search for a restaurant...", class: "home-search-input", autofocus: true %>
             </div>
         <% end %>
+
+        <div class="category-shortcuts">
+            <% Service.categories.keys.first(10).each do |category| %>
+                <%= link_to services_path(q: { category_eq: category }), class: "category-shortcut" do %>
+                    <div class="category-shortcut-circle">
+                        <%= Service::CATEGORY_EMOJIS[category.to_sym] %>
+                    </div>
+                    <span class="category-shortcut-label"><%= category.titleize %></span>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 </div>
