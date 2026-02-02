@@ -8,77 +8,96 @@
             <% selected_ids = Array(params[:food_item_ids]).map(&:to_i) %>
 
             <%= turbo_frame_tag "food_items_list" do %>
-                <div class="sort-controls" data-controller="sort">
-                    <span class="sort-label">Sort by:</span>
-                    <%= button_tag type: "submit",
-                        name: "q[s]",
-                        value: sort_value('name'),
-                        class: "sort-btn #{active_sort_classes('name')}",
-                        data: {
-                            sort_target: "button",
-                            field: "name",
-                            action: "click->sort#toggle",
-                            turbo_frame: "food_items_list"
-                        } do %>
-                        <span class="sort-icon">↑</span>
-                        <span class="sort-text">Name</span>
-                    <% end %>
 
-                    <%= button_tag type: "submit",
-                        name: "q[s]",
-                        value: sort_value('calories'),
-                        class: "sort-btn #{active_sort_classes('calories')}",
-                        data: {
-                            sort_target: "button",
-                            field: "calories",
-                            action: "click->sort#toggle",
-                            turbo_frame: "food_items_list"
-                        } do %>
-                        <span class="sort-icon">↑</span>
-                        <span class="sort-text">Calories</span>
-                    <% end %>
+                <div class="food-item-controls">
+                    <div class="sort-controls" data-controller="sort">
+                        <span class="sort-label">Sort by:</span>
+                        <%= button_tag type: "submit",
+                            name: "q[s]",
+                            value: sort_value('name'),
+                            class: "sort-btn #{active_sort_classes('name')}",
+                            data: {
+                                sort_target: "button",
+                                field: "name",
+                                action: "click->sort#toggle",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <span class="sort-icon">↑</span>
+                            <span class="sort-text">Name</span>
+                        <% end %>
 
-                    <%= button_tag type: "submit",
-                        name: "q[s]",
-                        value: sort_value('protein_g'),
-                        class: "sort-btn #{active_sort_classes('protein_g')}",
-                        data: {
-                            sort_target: "button",
-                            field: "protein_g",
-                            action: "click->sort#toggle",
-                            turbo_frame: "food_items_list"
-                        } do %>
-                        <span class="sort-icon">↑</span>
-                        <span class="sort-text">Protein</span>
-                    <% end %>
+                        <%= button_tag type: "submit",
+                            name: "q[s]",
+                            value: sort_value('calories'),
+                            class: "sort-btn #{active_sort_classes('calories')}",
+                            data: {
+                                sort_target: "button",
+                                field: "calories",
+                                action: "click->sort#toggle",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <span class="sort-icon">↑</span>
+                            <span class="sort-text">Calories</span>
+                        <% end %>
 
-                    <%= button_tag type: "submit",
-                        name: "q[s]",
-                        value: sort_value('sodium_mg'),
-                        class: "sort-btn #{active_sort_classes('sodium_mg')}",
-                        data: {
-                            sort_target: "button",
-                            field: "sodium_mg",
-                            action: "click->sort#toggle",
-                            turbo_frame: "food_items_list"
-                        } do %>
-                        <span class="sort-icon">↑</span>
-                        <span class="sort-text">Sodium</span>
-                    <% end %>
+                        <%= button_tag type: "submit",
+                            name: "q[s]",
+                            value: sort_value('protein_g'),
+                            class: "sort-btn #{active_sort_classes('protein_g')}",
+                            data: {
+                                sort_target: "button",
+                                field: "protein_g",
+                                action: "click->sort#toggle",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <span class="sort-icon">↑</span>
+                            <span class="sort-text">Protein</span>
+                        <% end %>
 
-                    <%= button_tag type: "submit",
-                        name: "q[s]",
-                        value: sort_value('carbs_g'),
-                        class: "sort-btn #{active_sort_classes('carbs_g')}",
-                        data: {
-                            sort_target: "button",
-                            field: "carbs_g",
-                            action: "click->sort#toggle",
-                            turbo_frame: "food_items_list"
-                        } do %>
-                        <span class="sort-icon">↑</span>
-                        <span class="sort-text">Carbs</span>
-                    <% end %>
+                        <%= button_tag type: "submit",
+                            name: "q[s]",
+                            value: sort_value('sodium_mg'),
+                            class: "sort-btn #{active_sort_classes('sodium_mg')}",
+                            data: {
+                                sort_target: "button",
+                                field: "sodium_mg",
+                                action: "click->sort#toggle",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <span class="sort-icon">↑</span>
+                            <span class="sort-text">Sodium</span>
+                        <% end %>
+
+                        <%= button_tag type: "submit",
+                            name: "q[s]",
+                            value: sort_value('carbs_g'),
+                            class: "sort-btn #{active_sort_classes('carbs_g')}",
+                            data: {
+                                sort_target: "button",
+                                field: "carbs_g",
+                                action: "click->sort#toggle",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <span class="sort-icon">↑</span>
+                            <span class="sort-text">Carbs</span>
+                        <% end %>
+                    </div>
+
+                    <div class="reset-button" data-controller="food-item">
+                        <%= button_tag type: "submit",
+                            name: "reset-all",
+                            class: "reset-btn",
+                            data: {
+                                sort_target: "button",
+                                action: "click->food-item#reset",
+                                turbo_frame: "food_items_list"
+                            } do %>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                            </svg>
+                            Reset All
+                        <% end %>
+                    </div>
                 </div>
 
                 <div class="food-item-list">

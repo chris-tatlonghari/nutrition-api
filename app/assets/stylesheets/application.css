@@ -391,6 +391,11 @@ h2 {
     margin: 0 0 32px 0;
 }
 
+.food-item-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
 .sort-controls {
     display: flex;
     gap: 12px;
@@ -489,6 +494,27 @@ h2 {
 .sort-btn:active::before {
     width: 300px;
     height: 300px;
+}
+
+.reset-btn {
+    position: relative;
+    background: white;
+    border: 2px solid rgb(226 232 240);
+    color: rgb(74 85 104);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reset-btn:hover {
+    border-color: rgb(220 38 38);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.2);
 }
 
 .food-item-list {
