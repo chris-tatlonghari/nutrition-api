@@ -1,28 +1,28 @@
-<div class="row service-layout">
-    <div class="col-sm-7 col-xs-12">
-        <h1 class="service-title"><%= @service.name %></h1>
-        <%= form_with url: service_path(@service),
-                    method: :get,
-                    data: { controller: "autosubmit", turbo_stream: true } do %>
+<%= turbo_frame_tag "service_details" do %>
+    <div class="row service-layout">
+        <div class="col-sm-7 col-xs-12">
+            <h1 class="service-title"><%= @service.name %></h1>
+            <%= form_with url: service_path(@service),
+                        method: :get,
+                        data: { controller: "autosubmit", turbo_frame: "service_details" } do %>
 
-            <%= hidden_field_tag "q[s]", params.dig(:q, :s) || "name asc" %>
+                <%= hidden_field_tag "q[s]", params.dig(:q, :s) || "name asc" %>
 
-            <%= turbo_frame_tag "food_items_list" do %>
-                <%= render "food_items_list" %>
+                <%= turbo_frame_tag "food_items_list" do %>
+                    <%= render "food_items_list" %>
+                <% end %>
+
             <% end %>
+        </div>
 
-        <% end %>
+        <div class="col-sm-5 col-xs-12">
+            <turbo-frame id="shopping_cart">
+                <%= render "shopping_cart" %>
+            </turbo-frame>
+
+            <turbo-frame id="nutrition_facts">
+            <%= render "nutrition_facts", nutrition: @nutrition %>
+            </turbo-frame>
+        </div>
     </div>
-
-    <div class="col-sm-5 col-xs-12">
-        <turbo-frame id="shopping_cart">
-            <%= render "shopping_cart" %>
-        </turbo-frame>
-
-        <turbo-frame id="nutrition_facts">
-        <%= render "nutrition_facts", nutrition: @nutrition %>
-        </turbo-frame>
-    </div>
-</div>
-
-<br>
+<% end %>
